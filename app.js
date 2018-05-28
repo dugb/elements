@@ -10,7 +10,16 @@ app.get('/api', (req, res) => {
 	res.json(result);
 });
 
-app.get('/api/:p', (req, res) => {
+app.get('/api/elements', (req, res) => {
+	let result = {};
+	result = {
+		instructions: 'send a get request to the server with a string in the url',
+		example: 'https://dugb.net/api/elements/PutYourStringHere'
+	};
+	res.json(result);
+});
+
+app.get('/api/elements/:p', (req, res) => {
 	str = req.params.p.toLowerCase();
 	// loop through each character of the string and check
 	// the character and the character with its prefix and with its suffix
@@ -45,12 +54,10 @@ app.get('/api/:p', (req, res) => {
 	}
 
 	result = {
-		name: str,
+		string: str,
 		result: fndFinal
 	};
 	res.json(result);
 });
 
-app.listen(3000, () =>
-	console.log('Name from Elements App listening on port 3000!')
-);
+app.listen(3001, () => console.log('Elements Api listening on port 3001!'));
